@@ -28,6 +28,7 @@ passport.use(new GoogleStrategy({
     clientID: keys.googleClientID,
     clientSecret: keys.googleClientSecret,
     callbackURL: key.googleRedirectURL,
+    proxy: true
 }, (accessToken, refreshToken, profile, done) => {
 
     //console.log('GoogleStrateg');

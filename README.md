@@ -62,3 +62,6 @@ This project uses a mlab hosted Mongodb.
 
 ### Users
 
+## React Strip Checkout Component
+
+* [React Strip Checkout Component](https://github.com/azmenak/react-stripe-checkout)

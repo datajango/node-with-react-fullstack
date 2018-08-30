@@ -25,30 +25,26 @@ passport.deserializeUser((id, done) => {
 });
 
 passport.use(new GoogleStrategy({
-    clientID: keys.googleClientID,
-    clientSecret: keys.googleClientSecret,
-    callbackURL: keys.googleRedirectURL,
-    proxy: true
-}, (accessToken, refreshToken, profile, done) => {
+        clientID: keys.googleClientID,
+        clientSecret: keys.googleClientSecret,
+        callbackURL: keys.googleRedirectURL,
+        proxy: true
+    },
+    async (accessToken, refreshToken, profile, done) => {
+        //console.log('GoogleStrateg');
+        //console.log('    accessToken:', accessToken);
+        //console.log('    refreshToken:', refreshToken);
+        //console.log('    profile:', profile);
+        const existingUser = await User.findOne({googleId: profile.id});
 
-    //console.log('GoogleStrateg');
-    //console.log('    accessToken:', accessToken);
-    //console.log('    refreshToken:', refreshToken);
-    //console.log('    profile:', profile);
+        if (existingUser) {
+            // a user was found with the id
+            //console.log('Found a user:', existingUser);
+            return done(null, existingUser);
+        }
 
-    User.findOne({ googleId: profile.id })
-        .then((existingUser) => {
-            if (existingUser) {
-                // a user was found with the id
-                console.log('Found a user:', existingUser);
-                
-                done(null, existingUser);
-            } else {
-                // a user was not found with the id
-                new User({ googleId: profile.id })
-                    .save()
-                    .then(user => done(null, user));
-            }
-        })    
-}));
-
+        // a user was not found with the id
+        const user = await new User({googleId: profile.id}).save();
+        done(null, user);
+    })
+);

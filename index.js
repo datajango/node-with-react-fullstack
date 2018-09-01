@@ -8,7 +8,6 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const keys = require('./config/keys');
-console.log(keys);
 require('./models/users');
 require('./services/passport');
 
@@ -29,24 +28,22 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+require('./routes/authRoutes')(app);
+require('./routes/billingRoutes')(app);
+
 if (process.env.NODE_ENV === 'production') {
-    // Express will serve up application assets
-    // like out main.js file, or ,main.css file.
+    // Express will serve up production assets
+    // like our main.js file, or main.css file!
     app.use(express.static('client/build'));
-
-
-    // Express will server up 'index.html' file
-    // if it doesn;t recognize the route
+  
+    // Express will serve up the index.html file
+    // if it doesn't recognize the route
     const path = require('path');
     app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
-}
+  }
 
-require('./routes/authRoutes')(app);
-//const billingRoutes = require('./routes/billingRoutes');
-//billingRoutes(app);
-require('./routes/billingRoutes')(app);
 
 const PORT = process.env.PORT || 5000;
 console.log('Running on port ', PORT);

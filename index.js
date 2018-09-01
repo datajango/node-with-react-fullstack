@@ -8,6 +8,7 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const keys = require('./config/keys');
+console.log(keys);
 require('./models/users');
 require('./services/passport');
 

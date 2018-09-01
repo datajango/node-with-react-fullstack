@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
+import Payments from '../Payments/Payments';
+import './Header.css';
 
 class Header extends Component {
 
@@ -11,7 +13,11 @@ class Header extends Component {
       case false:
         return <li><a href="/auth/google">Sign-in with Google</a></li>;
       default:
-        return <li><a href="/api/logout">Sign-out</a></li>;
+        return [
+          <li className="navitem" key="1"><Payments/></li>,
+          <li className="navitem" key="3">Credits: {this.props.auth.credits}</li>,
+          <li className="navitem" key="2"><a href="/api/logout">Sign-out</a></li>
+        ];
     }
   }
 

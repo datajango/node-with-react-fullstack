@@ -1,4 +1,4 @@
-// auth.js
+// authRoutes.js
 const passport = require('passport');
 
 module.exports = (app) => {

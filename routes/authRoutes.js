@@ -13,11 +13,12 @@ module.exports = (app) => {
     );
 
     app.get('/api/current_user', (req, res) => {
-        console.log('/api/current_user');
+        console.log('route /api/current_user');
         res.send(req.user);
     });
 
     app.get('/api/session', (req, res) => {
+        console.log('route /api/session');
         res.send(req.session);
     });
 

@@ -5,7 +5,7 @@ const requireLogin = require('../middlewares/requireLogin');
 
 module.exports = (app) => {
     app.post('/api/stripe', requireLogin, async (req, res) => {
-        //console.log('/api/stripe', req);
+        console.log('/api/stripe');
 
         // this code was moved to the middleware
         //if (!req.user) {

@@ -16,8 +16,13 @@ module.exports = (app) => {
     );
 
     app.get('/api/current_user', (req, res) => {
-        console.log('route /api/current_user');
-        res.send(req.user);
+        try {
+            console.log('/api/current_user', req.user);
+            res.send(req.user);
+        } catch (e) {
+            console.error('caught', e);
+            res.send(null);
+        }
     });
 
     app.get('/api/session', (req, res) => {

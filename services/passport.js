@@ -31,7 +31,7 @@ passport.use(new GoogleStrategy({
         proxy: true
     },
     async (accessToken, refreshToken, profile, done) => {
-        console.log('GoogleStrateg');
+        console.log('GoogleStrategu');
         console.log('    accessToken:', accessToken);
         console.log('    refreshToken:', refreshToken);
         console.log('    profile:', profile);

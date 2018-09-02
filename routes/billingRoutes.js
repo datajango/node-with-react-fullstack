@@ -20,14 +20,10 @@ module.exports = (app) => {
         };
 
         console.log('chargeRequest:', chargeRequest);
-
         const chargeResponse = await stripe.charges.create(chargeRequest);
-
         console.log('chargeResponse:', chargeResponse);
-
         req.user.credits += 5;
-        const user = await req.user.save();
-                
+        const user = await req.user.save();                
         res.send(user);    
     });
 };

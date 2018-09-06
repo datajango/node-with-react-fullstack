@@ -20,6 +20,7 @@ Started 8/23/2018
 1. react
     1. Create React App    
     1. redux
+    1. redux-form
     1. react-redux
     1. react-router-dom
     1. materialize-css
@@ -30,6 +31,8 @@ Started 8/23/2018
 1. stripe.com
 1. github.com
 1. mailinator.com
+1. sendgrid.com
+1. emailregex.com
 
 ## Create React
 
@@ -120,3 +123,7 @@ This project uses a mlab hosted Mongodb.
 
 - Customizing the build process
 - Heroku-specific build steps
+
+## Regex
+
+- emailregex.com

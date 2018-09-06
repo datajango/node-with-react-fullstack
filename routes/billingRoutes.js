@@ -5,7 +5,7 @@ const requireLogin = require('../middlewares/requireLogin');
 
 module.exports = (app) => {
     app.post('/api/stripe', requireLogin, async (req, res) => {
-        console.log('/api/stripe');
+        //console.log('/api/stripe');
 
         // this code was moved to the middleware
         //if (!req.user) {
@@ -19,9 +19,9 @@ module.exports = (app) => {
             source: req.body.id
         };
 
-        console.log('chargeRequest:', chargeRequest);
+        //console.log('chargeRequest:', chargeRequest);
         const chargeResponse = await stripe.charges.create(chargeRequest);
-        console.log('chargeResponse:', chargeResponse);
+        //console.log('chargeResponse:', chargeResponse);
         req.user.credits += 5;
         const user = await req.user.save();                
         res.send(user);    

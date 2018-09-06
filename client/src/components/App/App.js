@@ -8,7 +8,7 @@ import './App.css';
 import Header from "../Header/Header";
 import Dashboard from "../Dashboard/Dashboard";
 import Landing from "../Landing/Landing";
-import SurveyNew from "../SurveyNew/SurveyNew";
+import SurveyNew from "../Surveys/SurveyNew";
 
 class App extends Component {
 
